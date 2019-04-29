@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, View, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
+import {OptimizedFlatList as FlatList} from 'react-native-optimized-flatlist'
 import debounce from 'lodash/debounce';
 
 import AlphabeticScrollBar from './components/AlphabeticScrollBar';
@@ -122,7 +123,7 @@ export default class AlphaScrollFlatList extends Component {
             <View onLayout={this.handleOnLayout.bind(this)}>
                 <FlatList
                     {...this.props}
-                    ref={elem => this.list = elem}
+                    listRef={elem => this.list = elem}
                 />
                 {this.props.hideSideBar ? null : (
                     <AlphabeticScrollBar
